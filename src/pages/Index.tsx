@@ -20,7 +20,7 @@ const TEXTURES = [
   { name: "Под камень", desc: "Натуральный облицовочный камень" },
 ];
 
-const PRICE_PER_M2 = 2800;
+const PRICE_PER_M2 = 750;
 
 export default function Index() {
   const [area, setArea] = useState("");
@@ -376,17 +376,10 @@ export default function Index() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {TEXTURES.map((t) => (
-              <div key={t.name} className="group relative overflow-hidden rounded-sm shadow-md cursor-pointer">
-                <img
-                  src={HERO_IMAGE}
-                  alt={t.name}
-                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(20,12,6,0.8)] to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <h3 className="font-heading text-xl font-bold text-white">{t.name}</h3>
-                  <p className="text-sand-300 text-sm mt-1">{t.desc}</p>
-                </div>
+              <div key={t.name} className="bg-white rounded-sm border border-sand-200 p-8 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                <div className="text-4xl mb-3">🧱</div>
+                <h3 className="font-heading text-xl font-bold text-foreground mb-2">{t.name}</h3>
+                <p className="text-muted-foreground text-sm">{t.desc}</p>
               </div>
             ))}
           </div>
@@ -450,10 +443,7 @@ export default function Index() {
                 alt="Производство термопанелей"
                 className="w-full h-80 object-cover rounded-sm shadow-xl"
               />
-              <div className="absolute -bottom-6 -left-6 bg-brick-600 text-white p-6 rounded-sm shadow-xl">
-                <div className="font-heading text-3xl font-bold">12+</div>
-                <div className="text-sm text-sand-200">лет на рынке</div>
-              </div>
+
             </div>
           </div>
         </div>
@@ -470,18 +460,7 @@ export default function Index() {
             <p className="text-muted-foreground mt-3">г. Иркутск, ул. Ракитная, 16а/1</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="rounded-sm overflow-hidden shadow-md border border-sand-200 h-80 lg:h-auto min-h-[320px]">
-              <iframe
-                src="https://yandex.ru/map-widget/v1/?ll=104.2964%2C52.2697&z=16&pt=104.2964%2C52.2697%2CFlag&text=%D0%98%D1%80%D0%BA%D1%83%D1%82%D1%81%D0%BA%2C+%D1%83%D0%BB.+%D0%A0%D0%B0%D0%BA%D0%B8%D1%82%D0%BD%D0%B0%D1%8F+16%D0%B01"
-                width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: "320px" }}
-                title="Карта Фактура Элит"
-                allowFullScreen
-              />
-            </div>
-
+          <div className="max-w-xl mx-auto">
             <div className="bg-white rounded-sm shadow-sm border border-sand-200 p-8 flex flex-col justify-between">
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -518,22 +497,13 @@ export default function Index() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+              <div className="mt-8">
                 <a
                   href="tel:608081"
-                  className="flex-1 bg-brick-600 hover:bg-brick-500 text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
+                  className="w-full bg-brick-600 hover:bg-brick-500 text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
                 >
                   <Icon name="Phone" size={18} />
                   ПОЗВОНИТЬ
-                </a>
-                <a
-                  href="https://wa.me/73952608081"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 bg-[#25D366] hover:bg-[#1db954] text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
-                >
-                  <Icon name="MessageCircle" size={18} />
-                  WHATSAPP
                 </a>
               </div>
             </div>
