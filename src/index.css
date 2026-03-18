@@ -4,8 +4,14 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 36 33% 97%;
+    --foreground: 20 40% 12%;
+
+    /* Brick warm palette */
+    --brick-primary: 18 73% 30%;
+    --brick-accent: 28 55% 65%;
+    --sand-light: 38 40% 92%;
+    --concrete-mid: 30 10% 55%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -13,17 +19,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 18 73% 30%;
+    --primary-foreground: 36 60% 96%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 38 35% 88%;
+    --secondary-foreground: 20 40% 18%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 36 25% 92%;
+    --muted-foreground: 30 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 28 55% 65%;
+    --accent-foreground: 20 40% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -97,5 +103,54 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Golos Text", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Oswald", sans-serif;
+  }
+}
+
+@layer utilities {
+  .texture-brick {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 18px,
+        rgba(0, 0, 0, 0.04) 18px,
+        rgba(0, 0, 0, 0.04) 20px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 38px,
+        rgba(0, 0, 0, 0.03) 38px,
+        rgba(0, 0, 0, 0.03) 40px
+      );
+  }
+
+  .texture-concrete {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+
+  .section-divider {
+    position: relative;
+  }
+
+  .section-divider::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: hsl(var(--primary));
   }
 }
