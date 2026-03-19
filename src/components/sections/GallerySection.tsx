@@ -23,14 +23,17 @@ export default function GallerySection() {
 
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
           {[
-            "https://cdn.poehali.dev/files/921744b7-4842-49bf-ae28-7702ee760527.jpg",
-            "https://cdn.poehali.dev/files/dbf0a448-dd53-4d3c-9f1c-81844c22fe28.jpg",
-            "https://cdn.poehali.dev/files/e10e2ba7-f48a-49d8-a037-ff8a5dbdbc2b.jpeg",
-            "https://cdn.poehali.dev/files/9ac3633b-412f-4045-b3ef-c38afbb9ab12.png",
-            "https://cdn.poehali.dev/files/adccdab1-81eb-4484-a599-40ec880d91c6.png",
-            "https://cdn.poehali.dev/files/ee7b04f3-96d3-410b-ae03-1b8eda908333.png",
-            "https://cdn.poehali.dev/files/c53255af-e654-4142-9f18-a1de8b2193ea.jpg",
-            "https://cdn.poehali.dev/files/3622dd9e-bcde-4e2a-a1df-ed80c47f0b9d.png",
+            "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/72118a27-4f74-415f-9c4d-00d96cc4e74c.png",
+            "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/96098e22-b80f-40b6-bd8b-011e19187fb6.png",
+            "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/17db3ec0-a595-4232-9f7d-61573787f394.png",
+            "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/b2d04e64-365e-41d6-914e-5bbc69fdb3e9.png",
+            "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/7bb1aad9-dd56-417e-9d39-106b221d0d93.png",
+            "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/52cd0c25-572b-49ae-8edb-5f7921e5d88e.png",
+            "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/c82df0cf-9b3e-4f34-b418-2e4f00688cbb.png",
+            "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/ed0d9b44-96f4-4fcf-abf3-2242f175ab4d.jpg",
+            "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/37440065-66fe-4fef-a2d9-bc4ef0f1defb.jpeg",
+            "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/8d1656f0-54d3-4351-a268-8bc4ffeea112.jpg",
+            "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/adf1778f-0b35-4453-a5a2-1930ba91b8a6.jpg",
           ].map((src, i) => (
             <div key={i} className="break-inside-avoid overflow-hidden rounded-sm shadow-md hover:shadow-xl transition-shadow">
               <img
