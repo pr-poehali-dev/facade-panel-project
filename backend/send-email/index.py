@@ -30,7 +30,7 @@ def handler(event: dict, context) -> dict:
         }
 
     smtp_user = 'faktura.elit@yandex.ru'
-    smtp_password = os.environ['SMTP_PASSWORD']
+    smtp_password = os.environ['SMTP_PASSWORD1']
 
     msg = MIMEMultipart('alternative')
     msg['Subject'] = f'Новая заявка с сайта — {name}'
