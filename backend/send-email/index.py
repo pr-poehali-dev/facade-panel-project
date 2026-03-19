@@ -35,7 +35,7 @@ def handler(event: dict, context) -> dict:
     msg = MIMEMultipart('alternative')
     msg['Subject'] = f'Новая заявка с сайта — {name}'
     msg['From'] = smtp_user
-    msg['To'] = smtp_user
+    msg['To'] = 'wood-kartina@yandex.ru'
 
     html = f"""
     <html><body style="font-family: Arial, sans-serif; color: #333;">
@@ -56,7 +56,7 @@ def handler(event: dict, context) -> dict:
 
     with smtplib.SMTP_SSL('smtp.yandex.ru', 465) as server:
         server.login(smtp_user, smtp_password)
-        server.sendmail(smtp_user, smtp_user, msg.as_string())
+        server.sendmail(smtp_user, 'wood-kartina@yandex.ru', msg.as_string())
 
     return {
         'statusCode': 200,
