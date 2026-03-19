@@ -479,8 +479,8 @@ export default function Index() {
                   </div>
                   <div>
                     <p className="font-heading text-sm tracking-wider uppercase text-muted-foreground mb-1">Телефон</p>
-                    <a href="tel:608081" className="text-foreground font-heading text-2xl hover:text-brick-600 transition-colors">
-                      60-80-81
+                    <a href="tel:+73952608081" className="text-foreground font-heading text-2xl hover:text-brick-600 transition-colors">
+                      8(3952)60-80-81
                     </a>
                   </div>
                 </div>
@@ -499,7 +499,7 @@ export default function Index() {
 
               <div className="mt-8">
                 <a
-                  href="tel:608081"
+                  href="tel:+73952608081"
                   className="w-full bg-brick-600 hover:bg-brick-500 text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
                 >
                   <Icon name="Phone" size={18} />
