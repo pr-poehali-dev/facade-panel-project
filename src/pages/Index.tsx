@@ -388,22 +388,33 @@ export default function Index() {
           <div className="text-center mb-14 section-divider pb-8">
             <span className="text-brick-600 font-body text-sm tracking-widest uppercase">Галерея</span>
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mt-2">
-              ЦВЕТА И ФАКТУРЫ
+              НАШИ РАБОТЫ
             </h2>
-            <p className="text-muted-foreground mt-3">Любой цвет на ваш выбор по каталогу RAL</p>
+            <p className="text-muted-foreground mt-3">Реальные объекты, сданные нашей командой</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {TEXTURES.map((t) => (
-              <div key={t.name} className="bg-white rounded-sm border border-sand-200 p-8 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-                <div className="text-4xl mb-3">🧱</div>
-                <h3 className="font-heading text-xl font-bold text-foreground mb-2">{t.name}</h3>
-                <p className="text-muted-foreground text-sm">{t.desc}</p>
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+            {[
+              "https://cdn.poehali.dev/files/921744b7-4842-49bf-ae28-7702ee760527.jpg",
+              "https://cdn.poehali.dev/files/dbf0a448-dd53-4d3c-9f1c-81844c22fe28.jpg",
+              "https://cdn.poehali.dev/files/e10e2ba7-f48a-49d8-a037-ff8a5dbdbc2b.jpeg",
+              "https://cdn.poehali.dev/files/9ac3633b-412f-4045-b3ef-c38afbb9ab12.png",
+              "https://cdn.poehali.dev/files/adccdab1-81eb-4484-a599-40ec880d91c6.png",
+              "https://cdn.poehali.dev/files/ee7b04f3-96d3-410b-ae03-1b8eda908333.png",
+              "https://cdn.poehali.dev/files/c53255af-e654-4142-9f18-a1de8b2193ea.jpg",
+              "https://cdn.poehali.dev/files/3622dd9e-bcde-4e2a-a1df-ed80c47f0b9d.png",
+            ].map((src, i) => (
+              <div key={i} className="break-inside-avoid overflow-hidden rounded-sm shadow-md hover:shadow-xl transition-shadow">
+                <img
+                  src={src}
+                  alt={`Работа ${i + 1}`}
+                  className="w-full object-cover hover:scale-105 transition-transform duration-500"
+                />
               </div>
             ))}
           </div>
 
-          <div className="bg-white rounded-sm shadow-sm border border-sand-200 p-8">
+          <div className="bg-white rounded-sm shadow-sm border border-sand-200 p-8 mt-12">
             <h3 className="font-heading text-xl font-semibold text-foreground mb-6 text-center">
               ПАЛИТРА ЦВЕТОВ RAL
             </h3>
