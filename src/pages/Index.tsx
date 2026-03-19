@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
+const SEND_EMAIL_URL = "https://functions.poehali.dev/515113b2-4033-45a4-ac40-1022653c854f";
+
 const HERO_IMAGE = "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/files/3060e33d-1f5a-4f28-8dfc-1d6c2fc322e4.jpg";
 
 const COLORS = [
@@ -27,12 +29,28 @@ export default function Index() {
   const [selectedColor, setSelectedColor] = useState(COLORS[0]);
   const [formData, setFormData] = useState({ name: "", phone: "" });
   const [calcSubmitted, setCalcSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const totalPrice = area ? Math.round(parseFloat(area) * PRICE_PER_M2) : 0;
 
-  const handleCalcSubmit = (e: React.FormEvent) => {
+  const handleCalcSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setCalcSubmitted(true);
+    setSending(true);
+    try {
+      await fetch(SEND_EMAIL_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          area: area,
+          color: `${selectedColor.name} (${selectedColor.ral})`,
+        }),
+      });
+    } finally {
+      setSending(false);
+      setCalcSubmitted(true);
+    }
   };
 
   return (
@@ -333,9 +351,10 @@ export default function Index() {
 
                     <button
                       type="submit"
-                      className="w-full bg-brick-600 hover:bg-brick-500 text-white py-4 font-heading text-lg tracking-wider transition-all hover:scale-[1.02] rounded-sm"
+                      disabled={sending}
+                      className="w-full bg-brick-600 hover:bg-brick-500 disabled:opacity-60 text-white py-4 font-heading text-lg tracking-wider transition-all hover:scale-[1.02] rounded-sm"
                     >
-                      ХОЧУ УЗНАТЬ ЦЕНУ ДЛЯ СВОЕГО ДОМА
+                      {sending ? 'ОТПРАВЛЯЕМ...' : 'ХОЧУ УЗНАТЬ ЦЕНУ ДЛЯ СВОЕГО ДОМА'}
                     </button>
                     <p className="text-xs text-muted-foreground text-center">
                       * Точная стоимость зависит от сложности монтажа. Менеджер уточнит детали.
