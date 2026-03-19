@@ -76,8 +76,11 @@ export default function ContactsSection() {
                   </div>
                   <div>
                     <p className="font-heading text-sm tracking-wider uppercase text-muted-foreground mb-1">Телефон</p>
-                    <a href="tel:+73952608081" className="text-foreground font-heading text-2xl hover:text-brick-600 transition-colors">
+                    <a href="tel:+73952608081" className="text-foreground font-heading text-2xl hover:text-brick-600 transition-colors block">
                       8(3952)60-80-81
+                    </a>
+                    <a href="tel:+79041529339" className="text-foreground font-heading text-2xl hover:text-brick-600 transition-colors block">
+                      8(904)152-93-39
                     </a>
                   </div>
                 </div>
@@ -94,13 +97,20 @@ export default function ContactsSection() {
                 </div>
               </div>
 
-              <div className="mt-8">
+              <div className="mt-8 flex flex-col gap-3">
                 <a
                   href="tel:+73952608081"
                   className="w-full bg-brick-600 hover:bg-brick-500 text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
                 >
                   <Icon name="Phone" size={18} />
-                  ПОЗВОНИТЬ
+                  8(3952)60-80-81
+                </a>
+                <a
+                  href="tel:+79041529339"
+                  className="w-full bg-brick-600 hover:bg-brick-500 text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
+                >
+                  <Icon name="Phone" size={18} />
+                  8(904)152-93-39
                 </a>
               </div>
             </div>
