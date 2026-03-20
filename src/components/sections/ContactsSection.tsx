@@ -112,6 +112,26 @@ export default function ContactsSection() {
                   <Icon name="Phone" size={18} />
                   8(904)152-93-39
                 </a>
+                <div className="flex gap-3">
+                  <a
+                    href="https://vk.ru/faktura.elit"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-[#0077FF] hover:bg-[#0066DD] text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
+                  >
+                    <Icon name="Users" size={18} />
+                    ВКонтакте
+                  </a>
+                  <a
+                    href="https://max.ru/join/IeGS79zIL6r84oInWAAlsV77gx5XAgVgNX6jnwg_GTc"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-[#FF6F00] hover:bg-[#E06000] text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
+                  >
+                    <Icon name="MessageCircle" size={18} />
+                    MAX
+                  </a>
+                </div>
               </div>
             </div>
           </div>
