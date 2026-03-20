@@ -369,22 +369,36 @@ export default function Index() {
           <div className="text-center mb-14 section-divider pb-8">
             <span className="text-brick-600 font-body text-sm tracking-widest uppercase">Галерея</span>
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mt-2">
-              ЦВЕТА И ФАКТУРЫ
+              НАШИ РАБОТЫ
             </h2>
-            <p className="text-muted-foreground mt-3">Любой цвет на ваш выбор по каталогу RAL</p>
+            <p className="text-muted-foreground mt-3">Реальные объекты, сданные нашей командой</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {TEXTURES.map((t) => (
-              <div key={t.name} className="bg-white rounded-sm border border-sand-200 p-8 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
-                <div className="text-4xl mb-3">🧱</div>
-                <h3 className="font-heading text-xl font-bold text-foreground mb-2">{t.name}</h3>
-                <p className="text-muted-foreground text-sm">{t.desc}</p>
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+            {[
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/72118a27-4f74-415f-9c4d-00d96cc4e74c.png",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/96098e22-b80f-40b6-bd8b-011e19187fb6.png",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/17db3ec0-a595-4232-9f7d-61573787f394.png",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/b2d04e64-365e-41d6-914e-5bbc69fdb3e9.png",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/7bb1aad9-dd56-417e-9d39-106b221d0d93.png",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/52cd0c25-572b-49ae-8edb-5f7921e5d88e.png",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/c82df0cf-9b3e-4f34-b418-2e4f00688cbb.png",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/ed0d9b44-96f4-4fcf-abf3-2242f175ab4d.jpg",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/37440065-66fe-4fef-a2d9-bc4ef0f1defb.jpeg",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/8d1656f0-54d3-4351-a268-8bc4ffeea112.jpg",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/adf1778f-0b35-4453-a5a2-1930ba91b8a6.jpg",
+            ].map((src, i) => (
+              <div key={i} className="break-inside-avoid overflow-hidden rounded-sm shadow-md hover:shadow-xl transition-shadow">
+                <img
+                  src={src}
+                  alt={`Работа ${i + 1}`}
+                  className="w-full object-cover hover:scale-105 transition-transform duration-500"
+                />
               </div>
             ))}
           </div>
 
-          <div className="bg-white rounded-sm shadow-sm border border-sand-200 p-8">
+          <div className="bg-white rounded-sm shadow-sm border border-sand-200 p-8 mt-12">
             <h3 className="font-heading text-xl font-semibold text-foreground mb-6 text-center">
               ПАЛИТРА ЦВЕТОВ RAL
             </h3>
@@ -497,14 +511,41 @@ export default function Index() {
                 </div>
               </div>
 
-              <div className="mt-8">
+              <div className="mt-8 flex flex-col gap-3">
                 <a
                   href="tel:+73952608081"
                   className="w-full bg-brick-600 hover:bg-brick-500 text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
                 >
                   <Icon name="Phone" size={18} />
-                  ПОЗВОНИТЬ
+                  8(3952)60-80-81
                 </a>
+                <a
+                  href="tel:+79041529339"
+                  className="w-full bg-brick-600 hover:bg-brick-500 text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
+                >
+                  <Icon name="Phone" size={18} />
+                  8(904)152-93-39
+                </a>
+                <div className="flex gap-3">
+                  <a
+                    href="https://vk.ru/faktura.elit"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-[#0077FF] hover:bg-[#0066DD] text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
+                  >
+                    <Icon name="Users" size={18} />
+                    ВКонтакте
+                  </a>
+                  <a
+                    href="https://max.ru/join/IeGS79zIL6r84oInWAAlsV77gx5XAgVgNX6jnwg_GTc"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-[#FF6F00] hover:bg-[#E06000] text-white px-6 py-4 font-heading tracking-wider text-center transition-all hover:scale-105 rounded-sm flex items-center justify-center gap-2"
+                  >
+                    <Icon name="MessageCircle" size={18} />
+                    MAX
+                  </a>
+                </div>
               </div>
             </div>
           </div>
