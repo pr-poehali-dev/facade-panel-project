@@ -25,15 +25,7 @@ const PRICE_PER_M2 = 750;
 export default function Index() {
   const [area, setArea] = useState("");
   const [selectedColor, setSelectedColor] = useState(COLORS[0]);
-  const [formData, setFormData] = useState({ name: "", phone: "" });
-  const [calcSubmitted, setCalcSubmitted] = useState(false);
-
   const totalPrice = area ? Math.round(parseFloat(area) * PRICE_PER_M2) : 0;
-
-  const handleCalcSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setCalcSubmitted(true);
-  };
 
   return (
     <div className="min-h-screen bg-background font-body overflow-x-hidden">
@@ -236,8 +228,7 @@ export default function Index() {
               </div>
 
               <div className="p-8">
-                {!calcSubmitted ? (
-                  <form onSubmit={handleCalcSubmit} className="space-y-8">
+                <div className="space-y-8">
                     <div>
                       <label className="block font-heading text-sm tracking-wider text-foreground mb-3 uppercase">
                         Площадь стен (м²)
@@ -250,7 +241,6 @@ export default function Index() {
                           onChange={(e) => setArea(e.target.value)}
                           placeholder="Например: 120"
                           className="flex-1 border border-sand-300 rounded-sm px-4 py-3 text-lg font-body focus:outline-none focus:border-brick-500 bg-sand-50"
-                          required
                         />
                         <span className="font-body text-muted-foreground">м²</span>
                       </div>
@@ -302,61 +292,26 @@ export default function Index() {
                       </div>
                     )}
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block font-heading text-sm tracking-wider text-foreground mb-2 uppercase">
-                          Ваше имя
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="Иван Иванов"
-                          className="w-full border border-sand-300 rounded-sm px-4 py-3 font-body focus:outline-none focus:border-brick-500 bg-sand-50"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label className="block font-heading text-sm tracking-wider text-foreground mb-2 uppercase">
-                          Телефон
-                        </label>
-                        <input
-                          type="tel"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="+7 (___) ___-__-__"
-                          className="w-full border border-sand-300 rounded-sm px-4 py-3 font-body focus:outline-none focus:border-brick-500 bg-sand-50"
-                          required
-                        />
-                      </div>
+                    <div className="flex flex-col gap-3">
+                      <a
+                        href="tel:+73952608081"
+                        className="w-full bg-brick-600 hover:bg-brick-500 text-white py-4 font-heading text-lg tracking-wider text-center transition-all hover:scale-[1.02] rounded-sm flex items-center justify-center gap-2"
+                      >
+                        <Icon name="Phone" size={20} />
+                        8(3952)60-80-81
+                      </a>
+                      <a
+                        href="tel:+79041529339"
+                        className="w-full bg-brick-600 hover:bg-brick-500 text-white py-4 font-heading text-lg tracking-wider text-center transition-all hover:scale-[1.02] rounded-sm flex items-center justify-center gap-2"
+                      >
+                        <Icon name="Phone" size={20} />
+                        8(904)152-93-39
+                      </a>
                     </div>
-
-                    <button
-                      type="submit"
-                      className="w-full bg-brick-600 hover:bg-brick-500 text-white py-4 font-heading text-lg tracking-wider transition-all hover:scale-[1.02] rounded-sm"
-                    >
-                      ХОЧУ УЗНАТЬ ЦЕНУ ДЛЯ СВОЕГО ДОМА
-                    </button>
                     <p className="text-xs text-muted-foreground text-center">
-                      * Точная стоимость зависит от сложности монтажа. Менеджер уточнит детали.
+                      * Точная стоимость зависит от сложности монтажа. Менеджер уточнит детали при звонке.
                     </p>
-                  </form>
-                ) : (
-                  <div className="text-center py-12">
-                    <div className="text-5xl mb-4">✅</div>
-                    <h3 className="font-heading text-2xl font-bold text-foreground mb-2">Заявка принята!</h3>
-                    <p className="text-muted-foreground">
-                      Менеджер свяжется с вами в течение 15 минут и уточнит все детали расчёта.
-                    </p>
-                    {area && (
-                      <div className="mt-6 bg-sand-100 rounded-sm px-6 py-4 inline-block">
-                        <p className="text-sm text-muted-foreground">Предварительная стоимость</p>
-                        <p className="font-heading text-3xl font-bold text-brick-600">{totalPrice.toLocaleString("ru-RU")} ₽</p>
-                        <p className="text-xs text-muted-foreground mt-1">{selectedColor.name} · {area} м²</p>
-                      </div>
-                    )}
                   </div>
-                )}
               </div>
             </div>
           </div>
