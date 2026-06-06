@@ -426,7 +426,7 @@ export default function Index() {
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mt-2">
               ПРИЕЗЖАЙТЕ СМОТРЕТЬ ОБРАЗЦЫ!
             </h2>
-            <p className="text-muted-foreground mt-3">г. Иркутск, ул. Ракитная, 16а/1</p>
+            <p className="text-muted-foreground mt-3">г. Иркутск, ул. Воронежская, 3а</p>
           </div>
 
           <div className="max-w-xl mx-auto">
@@ -438,7 +438,7 @@ export default function Index() {
                   </div>
                   <div>
                     <p className="font-heading text-sm tracking-wider uppercase text-muted-foreground mb-1">Адрес</p>
-                    <p className="text-foreground font-medium">г. Иркутск, ул. Ракитная, 16а/1</p>
+                    <p className="text-foreground font-medium">г. Иркутск, ул. Воронежская, 3а</p>
                   </div>
                 </div>
 
@@ -518,7 +518,7 @@ export default function Index() {
               <span className="font-heading tracking-wider text-white">ФАКТУРА ЭЛИТ</span>
             </div>
             <p className="text-sm text-center">
-              © 2024 Фактура Элит. г. Иркутск, ул. Ракитная, 16а/1. Тел: 60-80-81
+              © 2024 Фактура Элит. г. Иркутск, ул. Воронежская, 3а. Тел: 60-80-81
             </p>
             <a href="#" className="text-sm hover:text-white transition-colors underline underline-offset-4">
               Политика конфиденциальности
