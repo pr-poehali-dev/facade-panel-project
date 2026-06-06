@@ -330,27 +330,6 @@ export default function Index() {
             <p className="text-muted-foreground mt-3">Реальные объекты, сданные нашей командой</p>
           </div>
 
-          {/* Слайдеры ДО/ПОСЛЕ */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="rounded-sm shadow-md overflow-hidden" style={{ height: 320 }}>
-              <BeforeAfterSlider
-                beforeSrc="https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/51f690d8-a780-43ee-a0e5-c216e455582a.jpg"
-                afterSrc="https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/6b1d22e6-7b7f-4f19-8df3-7e926510761e.jpg"
-                beforeLabel="ДО"
-                afterLabel="ПОСЛЕ"
-              />
-            </div>
-            <div className="rounded-sm shadow-md overflow-hidden" style={{ height: 320 }}>
-              <BeforeAfterSlider
-                beforeSrc="https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/058d9d42-8c07-4741-82b1-f8b4a9a7de42.png"
-                afterSrc="https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/2e2044c1-1e6e-4e59-b93d-0fffac834e3d.jpg"
-                beforeLabel="ДО"
-                afterLabel="ПОСЛЕ"
-              />
-            </div>
-          </div>
-
-          {/* Обычная галерея */}
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
             {[
               "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/72118a27-4f74-415f-9c4d-00d96cc4e74c.png",
@@ -364,9 +343,13 @@ export default function Index() {
               "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/37440065-66fe-4fef-a2d9-bc4ef0f1defb.jpeg",
               "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/8d1656f0-54d3-4351-a268-8bc4ffeea112.jpg",
               "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/adf1778f-0b35-4453-a5a2-1930ba91b8a6.jpg",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/058d9d42-8c07-4741-82b1-f8b4a9a7de42.png",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/51f690d8-a780-43ee-a0e5-c216e455582a.jpg",
               "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/1f51ebe7-e503-46d9-8bfa-498164fb4c8f.jpg",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/6b1d22e6-7b7f-4f19-8df3-7e926510761e.jpg",
               "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/3ac3f203-31e6-4289-a473-939dec441cfb.jpg",
               "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/a7596ff4-18e8-41f4-97ab-6fed45e75cc5.jpg",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/2e2044c1-1e6e-4e59-b93d-0fffac834e3d.jpg",
             ].map((src, i) => (
               <div key={i} className="break-inside-avoid overflow-hidden rounded-sm shadow-md hover:shadow-xl transition-shadow">
                 <img
