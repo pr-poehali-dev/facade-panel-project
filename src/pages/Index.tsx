@@ -70,7 +70,7 @@ export default function Index() {
       <section className="relative min-h-screen flex items-center pt-16">
         <div className="absolute inset-0 overflow-hidden">
           <BeforeAfterSlider
-            beforeSrc="https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/51f690d8-a780-43ee-a0e5-c216e455582a.jpg"
+            beforeSrc="https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/77c0f384-36f4-4780-b36d-b2a8c2305899.jpg"
             afterSrc={HERO_IMAGE}
             beforeLabel="БЕЗ ПАНЕЛЕЙ"
             afterLabel="С ТЕРМОПАНЕЛЯМИ"
