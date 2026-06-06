@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 const HERO_IMAGE = "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/files/3060e33d-1f5a-4f28-8dfc-1d6c2fc322e4.jpg";
 
@@ -68,13 +69,13 @@ export default function Index() {
       {/* HERO */}
       <section className="relative min-h-screen flex items-center pt-16">
         <div className="absolute inset-0 overflow-hidden">
-          <img
-            src={HERO_IMAGE}
-            alt="Дом с фасадными термопанелями"
-            className="w-full h-full object-cover"
+          <BeforeAfterSlider
+            beforeSrc="https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/51f690d8-a780-43ee-a0e5-c216e455582a.jpg"
+            afterSrc={HERO_IMAGE}
+            beforeLabel="БЕЗ ПАНЕЛЕЙ"
+            afterLabel="С ТЕРМОПАНЕЛЯМИ"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[rgba(20,12,6,0.82)] via-[rgba(20,12,6,0.55)] to-transparent" />
-          <div className="absolute inset-0 texture-brick opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[rgba(20,12,6,0.75)] via-[rgba(20,12,6,0.35)] to-transparent pointer-events-none" />
         </div>
 
         <div className="relative container mx-auto px-4 py-24">
