@@ -332,6 +332,12 @@ export default function Index() {
 
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
             {[
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/23e826a1-cd81-45d2-b902-4fb1cfefe526.jpg",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/2ec060f0-e647-49e7-86c9-37e3e1911d9c.jpg",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/df944f4b-a7bf-4b1d-8751-65b4a23dd050.jpg",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/cd6037b2-3014-4bcf-a919-e071cfe5c721.jpg",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/d4d2d56b-5a1d-4bc3-b36c-dd506990319c.jpg",
+              "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/d14bfd6b-9a35-405c-beca-ac88782511db.jpg",
               "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/b2d04e64-365e-41d6-914e-5bbc69fdb3e9.png",
               "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/52cd0c25-572b-49ae-8edb-5f7921e5d88e.png",
               "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/c82df0cf-9b3e-4f34-b418-2e4f00688cbb.png",
