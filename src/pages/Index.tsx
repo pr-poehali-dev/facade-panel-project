@@ -57,6 +57,15 @@ export default function Index() {
               <span className="font-heading text-lg tracking-wider">60-80-81</span>
             </a>
             <a
+              href="https://www.avito.ru/irkutsk/remont_i_stroitelstvo/termopaneli_bez_posrednikov_8100904331"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center gap-2 bg-[#00AAFF] hover:bg-[#0090DD] text-white px-4 py-2 text-sm font-heading tracking-wider transition-colors rounded-sm"
+            >
+              <Icon name="ShoppingBag" size={15} />
+              АВИТО
+            </a>
+            <a
               href="#contacts"
               className="bg-brick-600 hover:bg-brick-500 text-white px-4 py-2 text-sm font-heading tracking-wider transition-colors rounded-sm"
             >
