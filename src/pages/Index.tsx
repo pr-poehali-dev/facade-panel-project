@@ -429,6 +429,32 @@ export default function Index() {
       </section>
 
       {/* CONTACTS */}
+      {/* AVITO */}
+      <section className="py-12 bg-[hsl(20,40%,12%)] texture-concrete">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto bg-[rgba(255,255,255,0.05)] border border-sand-700/30 rounded-sm p-8 text-center flex flex-col items-center gap-4">
+            <div className="w-14 h-14 bg-[#00AAFF] rounded-full flex items-center justify-center">
+              <Icon name="ShoppingBag" size={26} className="text-white" />
+            </div>
+            <h3 className="font-heading text-2xl md:text-3xl font-bold text-white">
+              Заказывайте наш товар на Авито
+            </h3>
+            <p className="text-sand-300 max-w-xl">
+              Термопанели «Фактура Элит» также можно заказать напрямую через объявление на Авито — без посредников
+            </p>
+            <a
+              href="https://www.avito.ru/irkutsk/remont_i_stroitelstvo/termopaneli_bez_posrednikov_8100904331"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#00AAFF] hover:bg-[#0090DD] text-white px-8 py-4 font-heading tracking-wider transition-all hover:scale-105 rounded-sm inline-flex items-center gap-2"
+            >
+              <Icon name="ExternalLink" size={18} />
+              ПЕРЕЙТИ НА АВИТО
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section id="contacts" className="py-20 bg-sand-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-14 section-divider pb-8">
