@@ -44,15 +44,15 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#advantages" className="text-sm text-sand-200 hover:text-white transition-colors">Преимущества</a>
-            <a href="#calculator" className="text-sm text-sand-200 hover:text-white transition-colors">Калькулятор</a>
-            <a href="#gallery" className="text-sm text-sand-200 hover:text-white transition-colors">Галерея</a>
-            <a href="#contacts" className="text-sm text-sand-200 hover:text-white transition-colors">Контакты</a>
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+            <a href="#advantages" className="text-sm text-sand-200 hover:text-white transition-colors whitespace-nowrap">Преимущества</a>
+            <a href="#calculator" className="text-sm text-sand-200 hover:text-white transition-colors whitespace-nowrap">Калькулятор</a>
+            <a href="#gallery" className="text-sm text-sand-200 hover:text-white transition-colors whitespace-nowrap">Галерея</a>
+            <a href="#contacts" className="text-sm text-sand-200 hover:text-white transition-colors whitespace-nowrap">Контакты</a>
           </div>
 
-          <div className="flex items-center gap-4">
-            <a href="tel:608081" className="hidden sm:flex items-center gap-2 text-sand-200 hover:text-white transition-colors">
+          <div className="flex items-center gap-2 md:gap-4">
+            <a href="tel:608081" className="hidden xl:flex items-center gap-2 text-sand-200 hover:text-white transition-colors whitespace-nowrap">
               <Icon name="Phone" size={15} />
               <span className="font-heading text-lg tracking-wider">60-80-81</span>
             </a>
@@ -60,16 +60,16 @@ export default function Index() {
               href="https://www.avito.ru/irkutsk/remont_i_stroitelstvo/termopaneli_bez_posrednikov_8100904331"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-2 bg-[#00AAFF] hover:bg-[#0090DD] text-white px-4 py-2 text-sm font-heading tracking-wider transition-colors rounded-sm"
+              className="hidden sm:flex items-center gap-2 bg-[#00AAFF] hover:bg-[#0090DD] text-white px-3 md:px-4 py-2 text-sm font-heading tracking-wider transition-colors rounded-sm whitespace-nowrap flex-shrink-0"
             >
               <Icon name="ShoppingBag" size={15} />
               АВИТО
             </a>
             <a
               href="#contacts"
-              className="bg-brick-600 hover:bg-brick-500 text-white px-4 py-2 text-sm font-heading tracking-wider transition-colors rounded-sm"
+              className="bg-brick-600 hover:bg-brick-500 text-white px-3 md:px-4 py-2 text-sm font-heading tracking-wider transition-colors rounded-sm whitespace-nowrap flex-shrink-0"
             >
-              ЗАКАЗАТЬ ЗВОНОК
+              ЗВОНОК
             </a>
           </div>
         </div>
