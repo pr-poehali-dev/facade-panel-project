@@ -284,6 +284,110 @@ export default function Index() {
         </div>
       </section>
 
+      {/* COMPARISON: RENOVATION VS THERMOPANELS */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-14 section-divider pb-8">
+            <span className="text-brick-600 font-body text-sm tracking-widest uppercase">Сравнение</span>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mt-2">
+              РЕМОНТ ФАСАДА ИЛИ ТЕРМОПАНЕЛИ?
+            </h2>
+            <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
+              Обычный ремонт — это бесконечный цикл разовых решений. Термопанели решают вопрос фасада и утепления сразу и надолго
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="bg-sand-100 rounded-sm p-8 border border-sand-200">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-muted-foreground/20 flex items-center justify-center flex-shrink-0">
+                  <Icon name="X" size={20} className="text-muted-foreground" />
+                </div>
+                <h3 className="font-heading text-xl font-semibold text-foreground">Обычный ремонт</h3>
+              </div>
+              <div className="space-y-4">
+                {[
+                  "Штукатурка и краска трескаются от перепадов температур",
+                  "Требует обновления каждые 3–5 лет",
+                  "Не утепляет дом — расходы на отопление остаются",
+                  "Грязные «мокрые» работы, зависимость от погоды",
+                ].map((point) => (
+                  <div key={point} className="flex items-start gap-3">
+                    <Icon name="Minus" size={16} className="text-muted-foreground flex-shrink-0 mt-1" />
+                    <span className="text-muted-foreground text-sm leading-relaxed">{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-[hsl(20,40%,12%)] rounded-sm p-8 border-2 border-brick-500 relative">
+              <div className="absolute -top-3 right-6 bg-brick-600 text-white text-xs font-heading tracking-wider px-3 py-1 rounded-sm">
+                РЕШЕНИЕ 2 В 1
+              </div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-brick-600 flex items-center justify-center flex-shrink-0">
+                  <Icon name="Check" size={20} className="text-white" />
+                </div>
+                <h3 className="font-heading text-xl font-semibold text-white">Термопанели</h3>
+              </div>
+              <div className="space-y-4">
+                {[
+                  "Не боятся влаги, УФ и перепадов температур — 25+ лет без ремонта",
+                  "Утепляют и декорируют фасад за один цикл монтажа",
+                  "Экономия на отоплении до 60%",
+                  "Сухой монтаж «шип-паз», в любое время года",
+                ].map((point) => (
+                  <div key={point} className="flex items-start gap-3">
+                    <Icon name="Check" size={16} className="text-brick-400 flex-shrink-0 mt-1" />
+                    <span className="text-sand-200 text-sm leading-relaxed">{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROMO / DISCOUNTS */}
+      <section className="py-20 bg-[hsl(20,40%,12%)] texture-concrete">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-14 section-divider pb-8">
+            <span className="text-brick-400 font-body text-sm tracking-widest uppercase">Специально для вас</span>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mt-2">
+              АКЦИОННЫЕ ПРЕДЛОЖЕНИЯ
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { icon: "Percent", title: "Скидка 10%", desc: "При заказе от 100 м² фасадных термопанелей" },
+              { icon: "Ruler", title: "Бесплатный замер", desc: "Выезд замерщика и точный расчёт стоимости — без оплаты" },
+              { icon: "Truck", title: "Доставка в подарок", desc: "При заказе с монтажом доставка до объекта бесплатно" },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="bg-[rgba(255,255,255,0.05)] border border-sand-700/30 rounded-sm p-8 text-center hover:border-brick-500 transition-all"
+              >
+                <div className="w-14 h-14 bg-brick-600 rounded-full flex items-center justify-center mx-auto mb-5">
+                  <Icon name={item.icon} size={26} className="text-white" />
+                </div>
+                <h3 className="font-heading text-xl font-semibold text-white mb-3">{item.title}</h3>
+                <p className="text-sand-300 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <a
+              href="#calculator"
+              className="inline-block bg-brick-600 hover:bg-brick-500 text-white px-8 py-4 font-heading text-lg tracking-wider transition-all hover:scale-105 rounded-sm"
+            >
+              РАССЧИТАТЬ СО СКИДКОЙ
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CALCULATOR */}
       <section id="calculator" className="py-20 bg-sand-100">
         <div className="container mx-auto px-4">
