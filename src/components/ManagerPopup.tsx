@@ -51,7 +51,7 @@ export default function ManagerPopup() {
         <div>
           <p className="font-heading text-sm text-foreground mb-1">Андрей, менеджер</p>
           <p className="text-sm text-muted-foreground leading-snug">
-            Здравствуйте! Помогу рассчитать стоимость термопанелей для вашего дома 👋
+            Здравствуйте, меня зовут Андрей! Приглашаю рассчитать стоимость вашего объекта
           </p>
         </div>
       </div>
