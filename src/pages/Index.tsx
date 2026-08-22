@@ -287,7 +287,7 @@ export default function Index() {
             <div className="bg-white rounded-sm shadow-md border border-sand-200 overflow-hidden">
               <div className="bg-[hsl(20,40%,12%)] px-8 py-5">
                 <h3 className="font-heading text-xl text-white">Калькулятор термопанелей</h3>
-                <p className="text-sand-300 text-sm mt-1">Введите параметры — получите ориентировочную стоимость</p>
+                <p className="text-sand-300 text-sm mt-1">Заполните параметры — менеджер свяжется с вами с расчётом</p>
               </div>
 
               <div className="p-8">
@@ -300,9 +300,8 @@ export default function Index() {
                     </p>
                     {area && (
                       <div className="bg-sand-100 rounded-sm px-6 py-4 inline-block mb-4">
-                        <p className="text-sm text-muted-foreground">Предварительная стоимость</p>
-                        <p className="font-heading text-3xl font-bold text-brick-600">{totalPrice.toLocaleString("ru-RU")} ₽</p>
-                        <p className="text-xs text-muted-foreground mt-1">{selectedColor.name} · {area} м²</p>
+                        <p className="text-sm text-muted-foreground">Ваша заявка</p>
+                        <p className="font-heading text-xl font-bold text-brick-600">{selectedColor.name} · {area} м²</p>
                       </div>
                     )}
                     <div>
@@ -409,11 +408,6 @@ export default function Index() {
                           />
                           <span className="font-body text-muted-foreground">м²</span>
                         </div>
-                        {area && parseFloat(area) > 0 && (
-                          <p className="text-sm text-muted-foreground mt-3">
-                            Ориентировочно: <strong className="text-brick-600">{totalPrice.toLocaleString("ru-RU")} ₽</strong>
-                          </p>
-                        )}
                         <div className="flex justify-between items-center mt-4">
                           <button
                             type="button"
@@ -436,23 +430,26 @@ export default function Index() {
 
                     {quizStep === 3 && (
                       <div>
-                        <label className="block font-heading text-lg text-foreground mb-4">
+                        <label className="block font-heading text-lg text-foreground mb-1">
                           Выберите цвет
                         </label>
-                        <div className="grid grid-cols-4 gap-3">
+                        <p className="text-sm text-muted-foreground mb-4">
+                          Это лишь примеры — доступен абсолютно любой цвет по каталогу RAL
+                        </p>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                           {COLORS.map((color) => (
                             <button
                               key={color.ral}
                               type="button"
                               onClick={() => setSelectedColor(color)}
-                              className={`flex flex-col items-center gap-2 p-3 rounded-sm border-2 transition-all ${
+                              className={`flex flex-col items-center gap-2 p-4 rounded-sm border-2 transition-all ${
                                 selectedColor.ral === color.ral
                                   ? "border-brick-600 shadow-md scale-105"
                                   : "border-sand-200 hover:border-sand-400"
                               }`}
                             >
                               <div
-                                className="w-10 h-10 rounded-sm shadow-inner border border-[rgba(0,0,0,0.1)]"
+                                className="w-16 h-16 rounded-sm shadow-inner border border-[rgba(0,0,0,0.1)]"
                                 style={{ backgroundColor: color.hex }}
                               />
                               <span className="text-xs font-body text-center text-muted-foreground leading-tight">
@@ -461,24 +458,11 @@ export default function Index() {
                             </button>
                           ))}
                         </div>
-                        <p className="text-xs text-muted-foreground mt-2">
-                          Выбрано: <strong>{selectedColor.name}</strong> ({selectedColor.ral})
+                        <p className="text-xs text-muted-foreground mt-3">
+                          Выбрано: <strong>{selectedColor.name}</strong> — точный оттенок обсудим с менеджером
                         </p>
 
-                        <div className="bg-sand-100 border border-sand-200 rounded-sm px-6 py-4 flex items-center justify-between mt-4">
-                          <div>
-                            <p className="text-sm text-muted-foreground">Ориентировочная стоимость материалов</p>
-                            <p className="font-heading text-3xl font-bold text-brick-600 mt-1">
-                              {totalPrice.toLocaleString("ru-RU")} ₽
-                            </p>
-                          </div>
-                          <div className="text-right text-sm text-muted-foreground">
-                            <p>{area} м²</p>
-                            <p>× {PRICE_PER_M2.toLocaleString("ru-RU")} ₽/м²</p>
-                          </div>
-                        </div>
-
-                        <div className="flex justify-between items-center mt-4">
+                        <div className="flex justify-between items-center mt-6">
                           <button
                             type="button"
                             onClick={() => setQuizStep(2)}
@@ -500,7 +484,7 @@ export default function Index() {
                     {quizStep === 4 && (
                       <form onSubmit={handleQuizSubmit}>
                         <label className="block font-heading text-lg text-foreground mb-4">
-                          Куда прислать расчёт?
+                          Как с вами связаться?
                         </label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
@@ -534,7 +518,6 @@ export default function Index() {
                         <div className="bg-sand-100 border border-sand-200 rounded-sm px-6 py-4 mt-4 text-sm text-muted-foreground space-y-1">
                           <p>{houseType} · {wallMaterial}</p>
                           <p>{area} м² · {selectedColor.name}</p>
-                          <p className="font-heading text-xl text-brick-600 mt-1">{totalPrice.toLocaleString("ru-RU")} ₽</p>
                         </div>
 
                         {quizError && (
