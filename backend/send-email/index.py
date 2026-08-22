@@ -31,7 +31,7 @@ def handler(event: dict, context) -> dict:
             'body': json.dumps({'error': 'Имя и телефон обязательны'})
         }
 
-    smtp_user = 'faktura.elit@yandex.ru'
+    smtp_user = 'Faktura.138@yandex.ru'
     smtp_password = os.environ['SMTP_PASSWORD1']
 
     msg = MIMEMultipart('alternative')
