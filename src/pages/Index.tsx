@@ -21,7 +21,7 @@ const TEXTURES = [
   { name: "Под камень", desc: "Натуральный облицовочный камень" },
 ];
 
-const PRICE_PER_M2 = 1450;
+const PRICE_PER_M2 = 1250;
 
 export default function Index() {
   const [area, setArea] = useState("");
