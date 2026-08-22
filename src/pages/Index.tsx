@@ -110,10 +110,19 @@ export default function Index() {
               <span className="font-heading text-lg tracking-wider">60-80-81</span>
             </a>
             <a
+              href="https://max.ru/join/IeGS79zIL6r84oInWAAlsV77gx5XAgVgNX6jnwg_GTc"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center gap-2 bg-[#FF6F00] hover:bg-[#E06000] text-white px-3 md:px-4 py-2 text-sm font-heading tracking-wider transition-colors rounded-sm whitespace-nowrap flex-shrink-0"
+            >
+              <Icon name="MessageCircle" size={15} />
+              MAX
+            </a>
+            <a
               href="https://www.avito.ru/irkutsk/remont_i_stroitelstvo/termopaneli_bez_posrednikov_8100904331"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-2 bg-[#00AAFF] hover:bg-[#0090DD] text-white px-3 md:px-4 py-2 text-sm font-heading tracking-wider transition-colors rounded-sm whitespace-nowrap flex-shrink-0"
+              className="hidden lg:flex items-center gap-2 bg-[#00AAFF] hover:bg-[#0090DD] text-white px-3 md:px-4 py-2 text-sm font-heading tracking-wider transition-colors rounded-sm whitespace-nowrap flex-shrink-0"
             >
               <Icon name="ShoppingBag" size={15} />
               АВИТО
