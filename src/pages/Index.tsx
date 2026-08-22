@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import ManagerPopup from "@/components/ManagerPopup";
 
 const HERO_IMAGE = "https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/3ac3f203-31e6-4289-a473-939dec441cfb.jpg";
 
@@ -83,6 +84,7 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background font-body overflow-x-hidden">
+      <ManagerPopup />
 
       {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[hsl(20,40%,12%)] text-white">
