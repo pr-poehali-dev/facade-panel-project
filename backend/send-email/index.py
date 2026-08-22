@@ -21,6 +21,8 @@ def handler(event: dict, context) -> dict:
     phone = body.get('phone', '').strip()
     area = body.get('area', '').strip()
     color = body.get('color', '').strip()
+    house_type = body.get('houseType', '').strip()
+    wall_material = body.get('wallMaterial', '').strip()
 
     if not name or not phone:
         return {
@@ -37,18 +39,23 @@ def handler(event: dict, context) -> dict:
     msg['From'] = smtp_user
     msg['To'] = 'wood-kartina@yandex.ru'
 
+    rows = ''
+    if house_type:
+        rows += f'<tr><td style="padding: 8px 12px; background: #f5f0eb; font-weight: bold;">Тип объекта</td><td style="padding: 8px 12px; border: 1px solid #ddd;">{house_type}</td></tr>'
+    if wall_material:
+        rows += f'<tr><td style="padding: 8px 12px; background: #f5f0eb; font-weight: bold;">Материал стен</td><td style="padding: 8px 12px; border: 1px solid #ddd;">{wall_material}</td></tr>'
+    if area:
+        rows += f'<tr><td style="padding: 8px 12px; background: #f5f0eb; font-weight: bold;">Площадь</td><td style="padding: 8px 12px; border: 1px solid #ddd;">{area} м²</td></tr>'
+    if color:
+        rows += f'<tr><td style="padding: 8px 12px; background: #f5f0eb; font-weight: bold;">Цвет</td><td style="padding: 8px 12px; border: 1px solid #ddd;">{color}</td></tr>'
+    rows += f'<tr><td style="padding: 8px 12px; background: #f5f0eb; font-weight: bold;">Имя</td><td style="padding: 8px 12px; border: 1px solid #ddd;">{name}</td></tr>'
+    rows += f'<tr><td style="padding: 8px 12px; background: #f5f0eb; font-weight: bold;">Телефон</td><td style="padding: 8px 12px; border: 1px solid #ddd;">{phone}</td></tr>'
+
     html = f"""
     <html><body style="font-family: Arial, sans-serif; color: #333;">
       <h2 style="color: #B5472A;">Новая заявка с сайта Фактура Элит</h2>
       <table style="border-collapse: collapse; width: 100%; max-width: 500px;">
-        <tr><td style="padding: 8px 12px; background: #f5f0eb; font-weight: bold;">Имя</td>
-            <td style="padding: 8px 12px; border: 1px solid #ddd;">{name}</td></tr>
-        <tr><td style="padding: 8px 12px; background: #f5f0eb; font-weight: bold;">Телефон</td>
-            <td style="padding: 8px 12px; border: 1px solid #ddd;">{phone}</td></tr>
-        <tr><td style="padding: 8px 12px; background: #f5f0eb; font-weight: bold;">Площадь</td>
-            <td style="padding: 8px 12px; border: 1px solid #ddd;">{area} м²</td></tr>
-        <tr><td style="padding: 8px 12px; background: #f5f0eb; font-weight: bold;">Цвет</td>
-            <td style="padding: 8px 12px; border: 1px solid #ddd;">{color}</td></tr>
+        {rows}
       </table>
     </body></html>
     """

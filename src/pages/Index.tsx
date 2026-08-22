@@ -23,10 +23,63 @@ const TEXTURES = [
 
 const PRICE_PER_M2 = 1250;
 
+const HOUSE_TYPES = ["Частный дом", "Дача", "Коттедж", "Коммерческое здание"];
+const WALL_MATERIALS = ["Кирпич", "Газоблок / пеноблок", "Дерево", "Бетон", "Другое"];
+
+const SEND_EMAIL_URL = "https://functions.poehali.dev/515113b2-4033-45a4-ac40-1022653c854f";
+
 export default function Index() {
   const [area, setArea] = useState("");
   const [selectedColor, setSelectedColor] = useState(COLORS[0]);
   const totalPrice = area ? Math.round(parseFloat(area) * PRICE_PER_M2) : 0;
+
+  const [quizStep, setQuizStep] = useState(0);
+  const [houseType, setHouseType] = useState("");
+  const [wallMaterial, setWallMaterial] = useState("");
+  const [clientName, setClientName] = useState("");
+  const [clientPhone, setClientPhone] = useState("");
+  const [quizSubmitted, setQuizSubmitted] = useState(false);
+  const [quizSending, setQuizSending] = useState(false);
+  const [quizError, setQuizError] = useState("");
+
+  const QUIZ_STEPS_COUNT = 5;
+
+  const handleQuizSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setQuizSending(true);
+    setQuizError("");
+    try {
+      const res = await fetch(SEND_EMAIL_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: clientName,
+          phone: clientPhone,
+          area,
+          color: `${selectedColor.name} (${selectedColor.ral})`,
+          houseType,
+          wallMaterial,
+        }),
+      });
+      if (!res.ok) throw new Error("Ошибка отправки");
+      setQuizSubmitted(true);
+    } catch {
+      setQuizError("Не удалось отправить заявку. Позвоните нам по телефону.");
+    } finally {
+      setQuizSending(false);
+    }
+  };
+
+  const resetQuiz = () => {
+    setQuizStep(0);
+    setHouseType("");
+    setWallMaterial("");
+    setArea("");
+    setClientName("");
+    setClientPhone("");
+    setQuizSubmitted(false);
+    setQuizError("");
+  };
 
   return (
     <div className="min-h-screen bg-background font-body overflow-x-hidden">
@@ -238,90 +291,279 @@ export default function Index() {
               </div>
 
               <div className="p-8">
-                <div className="space-y-8">
+                {quizSubmitted ? (
+                  <div className="text-center py-8">
+                    <div className="text-5xl mb-4">✅</div>
+                    <h3 className="font-heading text-2xl font-bold text-foreground mb-2">Заявка принята!</h3>
+                    <p className="text-muted-foreground mb-4">
+                      Менеджер свяжется с вами в течение 15 минут и уточнит все детали расчёта.
+                    </p>
+                    {area && (
+                      <div className="bg-sand-100 rounded-sm px-6 py-4 inline-block mb-4">
+                        <p className="text-sm text-muted-foreground">Предварительная стоимость</p>
+                        <p className="font-heading text-3xl font-bold text-brick-600">{totalPrice.toLocaleString("ru-RU")} ₽</p>
+                        <p className="text-xs text-muted-foreground mt-1">{selectedColor.name} · {area} м²</p>
+                      </div>
+                    )}
                     <div>
-                      <label className="block font-heading text-sm tracking-wider text-foreground mb-3 uppercase">
-                        Площадь стен (м²)
-                      </label>
-                      <div className="flex items-center gap-4">
-                        <input
-                          type="number"
-                          min="1"
-                          value={area}
-                          onChange={(e) => setArea(e.target.value)}
-                          placeholder="Например: 120"
-                          className="flex-1 border border-sand-300 rounded-sm px-4 py-3 text-lg font-body focus:outline-none focus:border-brick-500 bg-sand-50"
+                      <button
+                        type="button"
+                        onClick={resetQuiz}
+                        className="text-sm text-brick-600 hover:text-brick-500 underline underline-offset-4"
+                      >
+                        Рассчитать ещё раз
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-2">
+                      {Array.from({ length: QUIZ_STEPS_COUNT }).map((_, i) => (
+                        <div
+                          key={i}
+                          className={`h-1.5 flex-1 rounded-full transition-colors ${
+                            i <= quizStep ? "bg-brick-600" : "bg-sand-200"
+                          }`}
                         />
-                        <span className="font-body text-muted-foreground">м²</span>
-                      </div>
+                      ))}
                     </div>
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider font-heading">
+                      Шаг {quizStep + 1} из {QUIZ_STEPS_COUNT}
+                    </p>
 
-                    <div>
-                      <label className="block font-heading text-sm tracking-wider text-foreground mb-3 uppercase">
-                        Выберите цвет
-                      </label>
-                      <div className="grid grid-cols-4 gap-3">
-                        {COLORS.map((color) => (
-                          <button
-                            key={color.ral}
-                            type="button"
-                            onClick={() => setSelectedColor(color)}
-                            className={`flex flex-col items-center gap-2 p-3 rounded-sm border-2 transition-all ${
-                              selectedColor.ral === color.ral
-                                ? "border-brick-600 shadow-md scale-105"
-                                : "border-sand-200 hover:border-sand-400"
-                            }`}
-                          >
-                            <div
-                              className="w-10 h-10 rounded-sm shadow-inner border border-[rgba(0,0,0,0.1)]"
-                              style={{ backgroundColor: color.hex }}
-                            />
-                            <span className="text-xs font-body text-center text-muted-foreground leading-tight">
-                              {color.name}
-                            </span>
-                          </button>
-                        ))}
-                      </div>
-                      <p className="text-xs text-muted-foreground mt-2">
-                        Выбрано: <strong>{selectedColor.name}</strong> ({selectedColor.ral})
-                      </p>
-                    </div>
-
-                    {area && parseFloat(area) > 0 && (
-                      <div className="bg-sand-100 border border-sand-200 rounded-sm px-6 py-4 flex items-center justify-between">
-                        <div>
-                          <p className="text-sm text-muted-foreground">Ориентировочная стоимость материалов</p>
-                          <p className="font-heading text-3xl font-bold text-brick-600 mt-1">
-                            {totalPrice.toLocaleString("ru-RU")} ₽
-                          </p>
-                        </div>
-                        <div className="text-right text-sm text-muted-foreground">
-                          <p>{area} м²</p>
-                          <p>× {PRICE_PER_M2.toLocaleString("ru-RU")} ₽/м²</p>
+                    {quizStep === 0 && (
+                      <div>
+                        <label className="block font-heading text-lg text-foreground mb-4">
+                          Какой у вас объект?
+                        </label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {HOUSE_TYPES.map((t) => (
+                            <button
+                              key={t}
+                              type="button"
+                              onClick={() => {
+                                setHouseType(t);
+                                setQuizStep(1);
+                              }}
+                              className={`p-4 rounded-sm border-2 text-left font-body transition-all ${
+                                houseType === t
+                                  ? "border-brick-600 bg-brick-50 shadow-md"
+                                  : "border-sand-200 hover:border-sand-400"
+                              }`}
+                            >
+                              {t}
+                            </button>
+                          ))}
                         </div>
                       </div>
                     )}
 
-                    <div className="flex flex-col gap-3">
-                      <a
-                        href="tel:+73952608081"
-                        className="w-full bg-brick-600 hover:bg-brick-500 text-white py-4 font-heading text-lg tracking-wider text-center transition-all hover:scale-[1.02] rounded-sm flex items-center justify-center gap-2"
-                      >
-                        <Icon name="Phone" size={20} />
-                        8(3952)60-80-81
-                      </a>
-                      <a
-                        href="tel:+79041529339"
-                        className="w-full bg-brick-600 hover:bg-brick-500 text-white py-4 font-heading text-lg tracking-wider text-center transition-all hover:scale-[1.02] rounded-sm flex items-center justify-center gap-2"
-                      >
-                        <Icon name="Phone" size={20} />
-                        8(904)152-93-39
-                      </a>
-                    </div>
-                    <p className="text-xs text-muted-foreground text-center">
-                      * Точная стоимость зависит от сложности монтажа. Менеджер уточнит детали при звонке.
-                    </p>
+                    {quizStep === 1 && (
+                      <div>
+                        <label className="block font-heading text-lg text-foreground mb-4">
+                          Из какого материала стены?
+                        </label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {WALL_MATERIALS.map((m) => (
+                            <button
+                              key={m}
+                              type="button"
+                              onClick={() => {
+                                setWallMaterial(m);
+                                setQuizStep(2);
+                              }}
+                              className={`p-4 rounded-sm border-2 text-left font-body transition-all ${
+                                wallMaterial === m
+                                  ? "border-brick-600 bg-brick-50 shadow-md"
+                                  : "border-sand-200 hover:border-sand-400"
+                              }`}
+                            >
+                              {m}
+                            </button>
+                          ))}
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setQuizStep(0)}
+                          className="mt-4 text-sm text-muted-foreground hover:text-foreground"
+                        >
+                          ← Назад
+                        </button>
+                      </div>
+                    )}
+
+                    {quizStep === 2 && (
+                      <div>
+                        <label className="block font-heading text-lg text-foreground mb-4">
+                          Примерная площадь стен под отделку
+                        </label>
+                        <div className="flex items-center gap-4">
+                          <input
+                            type="number"
+                            min="1"
+                            value={area}
+                            onChange={(e) => setArea(e.target.value)}
+                            placeholder="Например: 120"
+                            autoFocus
+                            className="flex-1 border border-sand-300 rounded-sm px-4 py-3 text-lg font-body focus:outline-none focus:border-brick-500 bg-sand-50"
+                          />
+                          <span className="font-body text-muted-foreground">м²</span>
+                        </div>
+                        {area && parseFloat(area) > 0 && (
+                          <p className="text-sm text-muted-foreground mt-3">
+                            Ориентировочно: <strong className="text-brick-600">{totalPrice.toLocaleString("ru-RU")} ₽</strong>
+                          </p>
+                        )}
+                        <div className="flex justify-between items-center mt-4">
+                          <button
+                            type="button"
+                            onClick={() => setQuizStep(1)}
+                            className="text-sm text-muted-foreground hover:text-foreground"
+                          >
+                            ← Назад
+                          </button>
+                          <button
+                            type="button"
+                            disabled={!area || parseFloat(area) <= 0}
+                            onClick={() => setQuizStep(3)}
+                            className="bg-brick-600 hover:bg-brick-500 disabled:opacity-40 text-white px-6 py-3 font-heading tracking-wider rounded-sm"
+                          >
+                            Далее
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
+                    {quizStep === 3 && (
+                      <div>
+                        <label className="block font-heading text-lg text-foreground mb-4">
+                          Выберите цвет
+                        </label>
+                        <div className="grid grid-cols-4 gap-3">
+                          {COLORS.map((color) => (
+                            <button
+                              key={color.ral}
+                              type="button"
+                              onClick={() => setSelectedColor(color)}
+                              className={`flex flex-col items-center gap-2 p-3 rounded-sm border-2 transition-all ${
+                                selectedColor.ral === color.ral
+                                  ? "border-brick-600 shadow-md scale-105"
+                                  : "border-sand-200 hover:border-sand-400"
+                              }`}
+                            >
+                              <div
+                                className="w-10 h-10 rounded-sm shadow-inner border border-[rgba(0,0,0,0.1)]"
+                                style={{ backgroundColor: color.hex }}
+                              />
+                              <span className="text-xs font-body text-center text-muted-foreground leading-tight">
+                                {color.name}
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-2">
+                          Выбрано: <strong>{selectedColor.name}</strong> ({selectedColor.ral})
+                        </p>
+
+                        <div className="bg-sand-100 border border-sand-200 rounded-sm px-6 py-4 flex items-center justify-between mt-4">
+                          <div>
+                            <p className="text-sm text-muted-foreground">Ориентировочная стоимость материалов</p>
+                            <p className="font-heading text-3xl font-bold text-brick-600 mt-1">
+                              {totalPrice.toLocaleString("ru-RU")} ₽
+                            </p>
+                          </div>
+                          <div className="text-right text-sm text-muted-foreground">
+                            <p>{area} м²</p>
+                            <p>× {PRICE_PER_M2.toLocaleString("ru-RU")} ₽/м²</p>
+                          </div>
+                        </div>
+
+                        <div className="flex justify-between items-center mt-4">
+                          <button
+                            type="button"
+                            onClick={() => setQuizStep(2)}
+                            className="text-sm text-muted-foreground hover:text-foreground"
+                          >
+                            ← Назад
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setQuizStep(4)}
+                            className="bg-brick-600 hover:bg-brick-500 text-white px-6 py-3 font-heading tracking-wider rounded-sm"
+                          >
+                            Далее
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
+                    {quizStep === 4 && (
+                      <form onSubmit={handleQuizSubmit}>
+                        <label className="block font-heading text-lg text-foreground mb-4">
+                          Куда прислать расчёт?
+                        </label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="block font-heading text-sm tracking-wider text-foreground mb-2 uppercase">
+                              Ваше имя
+                            </label>
+                            <input
+                              type="text"
+                              value={clientName}
+                              onChange={(e) => setClientName(e.target.value)}
+                              placeholder="Иван Иванов"
+                              className="w-full border border-sand-300 rounded-sm px-4 py-3 font-body focus:outline-none focus:border-brick-500 bg-sand-50"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label className="block font-heading text-sm tracking-wider text-foreground mb-2 uppercase">
+                              Телефон
+                            </label>
+                            <input
+                              type="tel"
+                              value={clientPhone}
+                              onChange={(e) => setClientPhone(e.target.value)}
+                              placeholder="+7 (___) ___-__-__"
+                              className="w-full border border-sand-300 rounded-sm px-4 py-3 font-body focus:outline-none focus:border-brick-500 bg-sand-50"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div className="bg-sand-100 border border-sand-200 rounded-sm px-6 py-4 mt-4 text-sm text-muted-foreground space-y-1">
+                          <p>{houseType} · {wallMaterial}</p>
+                          <p>{area} м² · {selectedColor.name}</p>
+                          <p className="font-heading text-xl text-brick-600 mt-1">{totalPrice.toLocaleString("ru-RU")} ₽</p>
+                        </div>
+
+                        {quizError && (
+                          <p className="text-sm text-red-600 mt-3">{quizError}</p>
+                        )}
+
+                        <div className="flex justify-between items-center gap-4 mt-6">
+                          <button
+                            type="button"
+                            onClick={() => setQuizStep(3)}
+                            className="text-sm text-muted-foreground hover:text-foreground flex-shrink-0"
+                          >
+                            ← Назад
+                          </button>
+                          <button
+                            type="submit"
+                            disabled={quizSending}
+                            className="flex-1 bg-brick-600 hover:bg-brick-500 disabled:opacity-60 text-white py-4 font-heading text-lg tracking-wider rounded-sm transition-all hover:scale-[1.02]"
+                          >
+                            {quizSending ? "ОТПРАВЛЯЕМ..." : "ПОЛУЧИТЬ РАСЧЁТ"}
+                          </button>
+                        </div>
+                        <p className="text-xs text-muted-foreground text-center mt-4">
+                          * Точная стоимость зависит от сложности монтажа. Менеджер уточнит детали при звонке.
+                        </p>
+                      </form>
+                    )}
                   </div>
+                )}
               </div>
             </div>
           </div>
