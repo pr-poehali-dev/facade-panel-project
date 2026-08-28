@@ -735,6 +735,43 @@ export default function Index() {
         </div>
       </section>
 
+      {/* VIDEO */}
+      <section className="py-20 bg-sand-100">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <span className="text-brick-600 font-body text-sm tracking-widest uppercase">Смотрите сами</span>
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mt-3 mb-6">
+                КАК ВЫГЛЯДЯТ НАШИ ТЕРМОПАНЕЛИ
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                Короткое видео с реального объекта — оцените фактуру, стыки и качество отделки
+                вживую, а не на фото.
+              </p>
+              <a
+                href="#calculator"
+                className="inline-block bg-brick-600 hover:bg-brick-500 text-white px-8 py-4 font-heading text-lg tracking-wider transition-all hover:scale-105 rounded-sm"
+              >
+                РАССЧИТАТЬ ДЛЯ СВОЕГО ДОМА
+              </a>
+            </div>
+
+            <div className="order-1 lg:order-2 flex justify-center">
+              <div className="relative w-full max-w-[320px] aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                <video
+                  src="https://cdn.poehali.dev/projects/1828de66-2b38-4ca3-93cd-9c07400f2c1a/bucket/d20baa81-119f-429d-92f7-b05aa437ee7f.mp4"
+                  poster="/assets/video-poster.jpg"
+                  className="w-full h-full object-cover"
+                  controls
+                  playsInline
+                  preload="metadata"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* PRODUCTION */}
       <section className="py-20 bg-[hsl(20,40%,12%)]">
         <div className="container mx-auto px-4">
