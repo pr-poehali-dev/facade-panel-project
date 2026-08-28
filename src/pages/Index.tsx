@@ -43,7 +43,35 @@ export default function Index() {
   const [quizSending, setQuizSending] = useState(false);
   const [quizError, setQuizError] = useState("");
 
+  const [contactName, setContactName] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
+  const [contactSending, setContactSending] = useState(false);
+  const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [contactError, setContactError] = useState("");
+
   const QUIZ_STEPS_COUNT = 5;
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setContactSending(true);
+    setContactError("");
+    try {
+      const res = await fetch(SEND_EMAIL_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: contactName,
+          phone: contactPhone,
+        }),
+      });
+      if (!res.ok) throw new Error("Ошибка отправки");
+      setContactSubmitted(true);
+    } catch {
+      setContactError("Не удалось отправить заявку. Позвоните нам по телефону.");
+    } finally {
+      setContactSending(false);
+    }
+  };
 
   const handleQuizSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -851,7 +879,7 @@ export default function Index() {
             <p className="text-muted-foreground mt-3">г. Иркутск, ул. Воронежская, 3а</p>
           </div>
 
-          <div className="max-w-xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-4xl mx-auto items-stretch">
             <div className="bg-white rounded-sm shadow-sm border border-sand-200 p-8 flex flex-col justify-between">
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -924,6 +952,69 @@ export default function Index() {
                   </a>
                 </div>
               </div>
+            </div>
+
+            <div className="bg-[hsl(20,40%,12%)] rounded-sm shadow-sm p-8 flex flex-col justify-center">
+              {contactSubmitted ? (
+                <div className="text-center py-8">
+                  <div className="text-5xl mb-4">✅</div>
+                  <h3 className="font-heading text-2xl font-bold text-white mb-2">Заявка принята!</h3>
+                  <p className="text-sand-300">
+                    Менеджер Андрей свяжется с вами в течение 15 минут.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleContactSubmit}>
+                  <h3 className="font-heading text-2xl font-bold text-white mb-2">Оставить заявку</h3>
+                  <p className="text-sand-300 text-sm mb-6">
+                    Оставьте контакты — перезвоним и ответим на все вопросы
+                  </p>
+
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block font-heading text-sm tracking-wider text-sand-300 mb-2 uppercase">
+                        Ваше имя
+                      </label>
+                      <input
+                        type="text"
+                        value={contactName}
+                        onChange={(e) => setContactName(e.target.value)}
+                        placeholder="Иван Иванов"
+                        className="w-full border border-sand-700/40 bg-[rgba(255,255,255,0.05)] text-white placeholder:text-sand-400 rounded-sm px-4 py-3 font-body focus:outline-none focus:border-brick-500"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block font-heading text-sm tracking-wider text-sand-300 mb-2 uppercase">
+                        Телефон
+                      </label>
+                      <input
+                        type="tel"
+                        value={contactPhone}
+                        onChange={(e) => setContactPhone(e.target.value)}
+                        placeholder="+7 (___) ___-__-__"
+                        className="w-full border border-sand-700/40 bg-[rgba(255,255,255,0.05)] text-white placeholder:text-sand-400 rounded-sm px-4 py-3 font-body focus:outline-none focus:border-brick-500"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {contactError && (
+                    <p className="text-sm text-red-400 mt-3">{contactError}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={contactSending}
+                    className="w-full mt-6 bg-brick-600 hover:bg-brick-500 disabled:opacity-60 text-white py-4 font-heading text-lg tracking-wider rounded-sm transition-all hover:scale-[1.02]"
+                  >
+                    {contactSending ? "ОТПРАВЛЯЕМ..." : "ОСТАВИТЬ ЗАЯВКУ"}
+                  </button>
+                  <p className="text-xs text-sand-400 text-center mt-4">
+                    Нажимая кнопку, вы соглашаетесь на обработку персональных данных
+                  </p>
+                </form>
+              )}
             </div>
           </div>
         </div>
