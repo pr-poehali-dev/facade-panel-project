@@ -842,6 +842,45 @@ export default function Index() {
         </div>
       </section>
 
+      {/* REVIEWS 2GIS */}
+      <section className="py-20 bg-sand-100">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-14 section-divider pb-8">
+            <span className="text-brick-600 font-body text-sm tracking-widest uppercase">Нам доверяют</span>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mt-2">
+              ОТЗЫВЫ НАШИХ КЛИЕНТОВ
+            </h2>
+          </div>
+
+          <div className="max-w-2xl mx-auto bg-white rounded-sm shadow-md border border-sand-200 p-10 text-center">
+            <div className="w-16 h-16 bg-[#12D06E] rounded-full flex items-center justify-center mx-auto mb-6">
+              <Icon name="MapPin" size={28} className="text-white" />
+            </div>
+            <h3 className="font-heading text-2xl font-semibold text-foreground mb-3">
+              Фактура Элит на 2ГИС
+            </h3>
+            <div className="flex items-center justify-center gap-1 mb-4">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Icon key={i} name="Star" size={22} className="text-brick-500 fill-brick-500" />
+              ))}
+            </div>
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              Реальные отзывы клиентов о качестве материалов, монтаже и сервисе —
+              читайте на нашей странице в 2ГИС
+            </p>
+            <a
+              href="https://go.2gis.com/Mp5Gg"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#12D06E] hover:bg-[#0FB860] text-white px-8 py-4 font-heading text-lg tracking-wider transition-all hover:scale-105 rounded-sm"
+            >
+              <Icon name="ExternalLink" size={18} />
+              СМОТРЕТЬ ВСЕ ОТЗЫВЫ НА 2ГИС
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CONTACTS */}
       {/* AVITO */}
       <section className="py-12 bg-[hsl(20,40%,12%)] texture-concrete">
