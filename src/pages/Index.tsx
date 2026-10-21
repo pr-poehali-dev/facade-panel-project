@@ -215,7 +215,7 @@ export default function Index() {
                 href="#calculator"
                 className="bg-brick-600 hover:bg-brick-500 text-white px-8 py-4 font-heading text-lg tracking-wider transition-all hover:scale-105 rounded-sm text-center"
               >
-                ЗАПИСАТЬСЯ НА ЗАМЕР
+                ПОЛУЧИТЬ ПРАЙС
               </a>
               <a
                 href="#gallery"
